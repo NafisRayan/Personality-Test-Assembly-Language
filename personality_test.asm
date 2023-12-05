@@ -2,23 +2,25 @@
 .STACK 100H
 .DATA
     ; DEFINE YOUR VARIABLES
-    WELCOME_MESSAGE_ONE DB "Welcome to the Personality Test!", 13, 10, "$"
-    WELCOME_MESSAGE_TWO DB "Answer each question on a scale from 0 (Strongly Disagree) to 5 (Strongly Agree)", 13, 10, "$"
-    GOODBYE_MESSAGE DB "Good Bye. Have a nice day!", 13, 10, "$"
-    prompt2 DB "I enjoy socializing with a large group of people.", '$'
-    prompt3 DB "I prefer spending time alone or with a small group of close friends.", '$'
-    prompt4 DB "I am comfortable being the center of attention.", '$'
-    prompt5 DB "I am a good listener and enjoy meaningful one-on-one conversations.", '$'
-    prompt6 DB "I often take the lead in group activities or discussions.", '$'
-    prompt7 DB "I find it easy to start conversations with strangers.", '$'
-    prompt8 DB "I am open to trying new and adventurous activities.", '$'
-    prompt9 DB "I value routine and stability in my daily life.", '$'
-    prompt10 DB "I often reflect on my thoughts and feelings.", '$'
-    prompt11 DB "I enjoy being spontaneous and going with the flow.", '$'
+WELCOME_MESSAGE_ONE DB "********************************************************************************",13,10,"+++++++++++++++++++                                          +++++++++++++++++++",13,10,"+++++++++++++++++++      Welcome to the Personality Test!    +++++++++++++++++++",13,10,"+++++++++++++++++++                                          +++++++++++++++++++",13,10,"********************************************************************************","$"
+
+WELCOME_MESSAGE_TWO DB "    ++++++++++     Answer each question on a scale from 0 to 5     ++++++++++     ",13,10,"================================================================================",13,10,"      | Strongly Disagree | Disagree | Neutral | Agree |  Strongly Agree  |      ",13,10,"--------------------------------------------------------------------------------",13,10,"      |         1         |    2     |    3    |   4   |          5       |       ",13,10,"================================================================================",13,10,"$"
+    GOODBYE_MESSAGE DB "==============================================================================", 13, 10,"==========                Good Bye. Have a nice day!                ==========",13,10,"==============================================================================", "$"
+    prompt2 DB "=>   Do you enjoy socializing with a large group of people?",13,10,"===> Answer >>> ",'$'
+    prompt3 DB "=>   Do you prefer spending time alone or with a small group of close friends?",13,10,"===> Answer >>> ", '$'
+    prompt4 DB "=>   Are you comfortable being the center of attention?",13,10,"===> Answer >>> ", '$'
+    prompt5 DB "=>   Are you a good listener and enjoy meaningful one-on-one conversations?",13,10,"===> Answer >>> ", '$'
+    prompt6 DB "=>   I often take the lead in group activities or discussions?",13,10,"===> Answer >>> ", '$'
+    prompt7 DB "=>   Do you find it easy to start conversations with strangers?",13,10,"===> Answer >>> ", '$'
+    prompt8 DB "=>   Are you open to trying new and adventurous activities?",13,10,"===> Answer >>> ", '$'
+    prompt9 DB "=>   Do you value routine and stability in your daily life?",13,10,"===> Answer >>> ", '$'
+    prompt10 DB "=>   Do you find yourself frequently reflecting on your thoughts and feelings?",13,10,"===> Answer >>> ", '$'
+    prompt11 DB "=>   Do you find enjoyment in being spontaneous and going with the flow?",13,10,"===> Answer >>> ", '$'
     total_msg DB 'Total value is $'
-    introvert_msg DB "Based on your responses, you lean towards introversion.", '$'
-    extrovert_msg DB "Based on your responses, you lean towards extroversion.", '$'
-    balanced_msg DB "Based on your responses, you have a balanced personality.", '$'
+    introvert_msg DB "##############################################################################",13,10,"########                                                              ########",13,10,"######     Based on your responses, you lean towards introversion.      ######",13,10,"########                                                              ########",13,10,"##############################################################################",13,10, '$'
+    extrovert_msg DB "##############################################################################",13,10,"########                                                              ########",13,10,"######     Based on your responses, you lean towards extroversion.      ######",13,10,"########                                                              ########",13,10,"##############################################################################",13,10, '$'
+    balanced_msg DB "##############################################################################",13,10,"########                                                              ########",13,10,"######     Based on your responses, you have a balanced personality.    ######",13,10,"########                                                              ########",13,10,"##############################################################################",13,10, '$'
+    
     scores DB ?
 
 .CODE
@@ -51,8 +53,6 @@ MAIN PROC
     INT 21H
     
     JE  START_TEST
-
-    CMP AL, 'X'
    
 START_TEST:
     ; YOUR CODE STARTS HERE
@@ -63,15 +63,7 @@ START_TEST:
     MOV AH, 9
     LEA DX, prompt2
     INT 21H
-
-;new line try
-        MOV dl, 10
-        MOV ah, 02h
-        INT 21h
-        MOV dl, 13
-        MOV ah, 02h
-        INT 21h
-
+    
     ; Input user's response
     MOV AH, 1
     INT 21H
@@ -90,14 +82,6 @@ START_TEST:
     MOV AH, 9
     LEA DX, prompt3
     INT 21H
-
-;new line try
-        MOV dl, 10
-        MOV ah, 02h
-        INT 21h
-        MOV dl, 13
-        MOV ah, 02h
-        INT 21h
 
     ; Input user's response
     MOV AH, 1
@@ -118,13 +102,7 @@ START_TEST:
     LEA DX, prompt4
     INT 21H
 
-;new line try
-        MOV dl, 10
-        MOV ah, 02h
-        INT 21h
-        MOV dl, 13
-        MOV ah, 02h
-        INT 21h
+
 
     ; Input user's response
     MOV AH, 1
@@ -145,13 +123,7 @@ START_TEST:
     LEA DX, prompt5
     INT 21H
 
-;new line try
-        MOV dl, 10
-        MOV ah, 02h
-        INT 21h
-        MOV dl, 13
-        MOV ah, 02h
-        INT 21h
+
 
     ; Input user's response
     MOV AH, 1
@@ -172,13 +144,7 @@ START_TEST:
     LEA DX, prompt6
     INT 21H
 
-;new line try
-        MOV dl, 10
-        MOV ah, 02h
-        INT 21h
-        MOV dl, 13
-        MOV ah, 02h
-        INT 21h
+
 
     ; Input user's response
     MOV AH, 1
@@ -199,13 +165,7 @@ START_TEST:
     LEA DX, prompt7
     INT 21H
 
-;new line try
-        MOV dl, 10
-        MOV ah, 02h
-        INT 21h
-        MOV dl, 13
-        MOV ah, 02h
-        INT 21h
+
 
     ; Input user's response
     MOV AH, 1
@@ -226,14 +186,6 @@ START_TEST:
     LEA DX, prompt8
     INT 21H
 
-;new line try
-        MOV dl, 10
-        MOV ah, 02h
-        INT 21h
-        MOV dl, 13
-        MOV ah, 02h
-        INT 21h
-
     ; Input user's response
     MOV AH, 1
     INT 21H
@@ -253,13 +205,7 @@ START_TEST:
     LEA DX, prompt9
     INT 21H
 
-;new line try
-        MOV dl, 10
-        MOV ah, 02h
-        INT 21h
-        MOV dl, 13
-        MOV ah, 02h
-        INT 21h
+
 
     ; Input user's response
     MOV AH, 1
@@ -280,13 +226,7 @@ START_TEST:
     LEA DX, prompt10
     INT 21H
 
-;new line try
-        MOV dl, 10
-        MOV ah, 02h
-        INT 21h
-        MOV dl, 13
-        MOV ah, 02h
-        INT 21h
+
 
     ; Input user's response
     MOV AH, 1
@@ -307,13 +247,7 @@ START_TEST:
     LEA DX, prompt11
     INT 21H
 
-;new line try
-        MOV dl, 10
-        MOV ah, 02h
-        INT 21h
-        MOV dl, 13
-        MOV ah, 02h
-        INT 21h
+
 
     ; Input user's response
     MOV AH, 1
